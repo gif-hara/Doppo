@@ -10,14 +10,14 @@ namespace HK.Doppo
     /// </summary>
     public sealed class GameManager : MonoBehaviour
     {
-        private PlayerInputController playerInputController;
+        [SerializeField]
+        private PlayerInputController playerInputController = default;
 
         [SerializeField]
         private GameCameraController gameCameraController = default;
 
         private void Awake()
         {
-            playerInputController = new PlayerInputController();
             playerInputController.Setup();
 
             gameCameraController.Setup();

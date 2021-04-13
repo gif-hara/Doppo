@@ -392,6 +392,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c76bfa6d3d64046a948ea246b4a95b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInputController:
+    m_Cameraman: {fileID: 240719303}
   gameCameraController:
     m_Cameraman: {fileID: 240719303}
 --- !u!4 &1085605112

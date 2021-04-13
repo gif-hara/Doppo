@@ -8,8 +8,12 @@ namespace HK.Doppo
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public sealed class PlayerInputController : IDisposable
     {
+        [SerializeField]
+        private Cameraman m_Cameraman = default;
+
         private CompositeDisposable disposables = new CompositeDisposable();
 
         public void Setup()
@@ -39,6 +43,11 @@ namespace HK.Doppo
                         Input.GetAxis("Vertical")
                         )
                     .normalized;
+                    var cameraTransform = m_Cameraman.Camera.transform;
+                    var cameraForward = Vector3.Scale(cameraTransform.forward, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
+                    var cameraRight = Vector3.Scale(cameraTransform.right, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
+
+                    vector = (vector.z * cameraForward + vector.x * cameraRight).normalized;
                     actor.CharacterController.Move(vector * Time.deltaTime);
                 })
                 .AddTo(disposables);

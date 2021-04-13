@@ -9,7 +9,7 @@ namespace HK.Doppo
     /// 
     /// </summary>
     [Serializable]
-    public sealed class GameCameraController
+    public sealed class GameCameraController : IDisposable
     {
         [SerializeField]
         private Cameraman m_Cameraman = default;
@@ -37,6 +37,11 @@ namespace HK.Doppo
                     }
                 })
                 .AddTo(m_Disposables);
+        }
+
+        public void Dispose()
+        {
+            m_Disposables.Dispose();
         }
     }
 }
