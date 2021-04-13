@@ -39,7 +39,7 @@ namespace HK.Doppo
                         Input.GetAxis("Vertical")
                         )
                     .normalized;
-                    actor.CharacterController.Move(vector);
+                    actor.CharacterController.Move(vector * Time.deltaTime);
                 })
                 .AddTo(disposables);
         }

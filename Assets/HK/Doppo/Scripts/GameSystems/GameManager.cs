@@ -12,10 +12,15 @@ namespace HK.Doppo
     {
         private PlayerInputController playerInputController;
 
+        [SerializeField]
+        private GameCameraController gameCameraController = default;
+
         private void Awake()
         {
             playerInputController = new PlayerInputController();
             playerInputController.Setup();
+
+            gameCameraController.Setup();
 
             this.OnDestroyAsObservable()
                 .Subscribe(_ =>
