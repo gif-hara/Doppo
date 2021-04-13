@@ -11,21 +11,22 @@ namespace HK.Doppo
     public sealed class GameManager : MonoBehaviour
     {
         [SerializeField]
-        private PlayerInputController playerInputController = default;
+        private PlayerInputController m_PlayerInputController = default;
 
         [SerializeField]
-        private GameCameraController gameCameraController = default;
+        private GameCameraController m_GameCameraController = default;
 
         private void Awake()
         {
-            playerInputController.Setup();
+            m_PlayerInputController.Setup();
 
-            gameCameraController.Setup();
+            m_GameCameraController.Setup();
 
             this.OnDestroyAsObservable()
                 .Subscribe(_ =>
                 {
-                    playerInputController.Dispose();
+                    m_PlayerInputController.Dispose();
+                    m_GameCameraController.Dispose();
                 });
         }
     }
