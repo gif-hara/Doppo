@@ -10,13 +10,23 @@ namespace HK.Doppo
     {
         public CharacterController CharacterController
         {
-            get; private set;
+            get;
+            private set;
+        }
+
+        public MuzzleController MuzzleController
+        {
+            get;
+            private set;
         }
 
         private void Awake()
         {
             CharacterController = GetComponent<CharacterController>();
             Assert.IsNotNull(CharacterController);
+
+            MuzzleController = GetComponent<MuzzleController>();
+            Assert.IsNotNull(MuzzleController);
         }
     }
 }

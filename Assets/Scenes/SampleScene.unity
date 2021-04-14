@@ -395,8 +395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlayerInputController:
     m_Cameraman: {fileID: 240719303}
-    m_MousePointerPrefab: {fileID: 1303555932359756623, guid: f55360b9706934bfa93a69dcf1fb8069,
-      type: 3}
+    m_MoveSpeed: 5
   m_GameCameraController:
     m_Cameraman: {fileID: 240719303}
 --- !u!4 &1085605112

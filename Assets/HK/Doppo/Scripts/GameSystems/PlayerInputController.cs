@@ -15,11 +15,9 @@ namespace HK.Doppo
         private Cameraman m_Cameraman = default;
 
         [SerializeField]
-        private GameObject m_MousePointerPrefab = default;
+        private float m_MoveSpeed = default;
 
         private CompositeDisposable disposables = new CompositeDisposable();
-
-        private Transform m_MousePointerObject;
 
         public void Setup()
         {
@@ -30,8 +28,6 @@ namespace HK.Doppo
                     Register(x);
                 })
                 .AddTo(disposables);
-
-            m_MousePointerObject = UnityEngine.Object.Instantiate(m_MousePointerPrefab).transform;
         }
 
         public void Dispose()
@@ -44,21 +40,25 @@ namespace HK.Doppo
             Observable.EveryGameObjectUpdate()
                 .Subscribe(_ =>
                 {
-                    var vector = new Vector3(
-                        Input.GetAxis("Horizontal"),
-                        0.0f,
-                        Input.GetAxis("Vertical")
-                        )
-                    .normalized;
                     var camera = m_Cameraman.Camera;
-                    var cameraTransform = camera.transform;
-                    var cameraForward = Vector3.Scale(cameraTransform.forward, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
-                    var cameraRight = Vector3.Scale(cameraTransform.right, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
 
-                    vector = (vector.z * cameraForward + vector.x * cameraRight).normalized;
-                    actor.CharacterController.Move(vector * Time.deltaTime);
+                    // 移動
+                    {
+                        var vector = new Vector3(
+                            Input.GetAxis("Horizontal"),
+                            0.0f,
+                            Input.GetAxis("Vertical")
+                            )
+                        .normalized;
+                        var cameraTransform = camera.transform;
+                        var cameraForward = Vector3.Scale(cameraTransform.forward, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
+                        var cameraRight = Vector3.Scale(cameraTransform.right, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
 
-                    // マウス座標からポインターオブジェクトの座標を設定する
+                        vector = (vector.z * cameraForward + vector.x * cameraRight).normalized;
+                        actor.CharacterController.Move(vector * Time.deltaTime * m_MoveSpeed);
+                    }
+
+                    // マウス座標からActorの向きを設定する
                     // https://qiita.com/edo_m18/items/c8808f318f5abfa8af1e
                     {
                         var n = Vector3.up;
@@ -68,7 +68,19 @@ namespace HK.Doppo
                         var m = ray.direction;
                         var h = Vector3.Dot(n, x);
 
-                        m_MousePointerObject.localPosition = x0 + (h - Vector3.Dot(n, x0)) / Vector3.Dot(n, m) * m;
+                        var actorDirectionTarget = x0 + (h - Vector3.Dot(n, x0)) / Vector3.Dot(n, m) * m;
+
+                        var diff = actorDirectionTarget - actor.transform.localPosition;
+                        diff.y = 0.0f;
+                        actor.transform.localRotation = Quaternion.LookRotation(diff, Vector3.up);
+                    }
+
+                    // 攻撃
+                    {
+                        if (Input.GetAxis("Fire1") >= 1.0f)
+                        {
+                            actor.MuzzleController.Fire(0);
+                        }
                     }
                 })
                 .AddTo(disposables);
