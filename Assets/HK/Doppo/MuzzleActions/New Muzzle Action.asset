@@ -23,7 +23,7 @@ MonoBehaviour:
       type: {class: Move, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
       data:
         m_Angle: 0
-        m_Speed: 20
+        m_Speed: 180
     00000001:
       type: {class: DestroyFromSeconds, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
       data:

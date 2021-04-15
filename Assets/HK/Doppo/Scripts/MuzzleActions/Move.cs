@@ -15,7 +15,7 @@ namespace HK.Doppo.MuzzleActions
         [SerializeField]
         private float m_Speed = default;
 
-        public void Invoke(Actor actor)
+        public void Invoke(Actor actor, CompositeDisposable disposable)
         {
             actor.Events.UpdateSafeAsObservable()
                 .Subscribe(_ =>
@@ -23,7 +23,8 @@ namespace HK.Doppo.MuzzleActions
                     var rotation = actor.transform.localRotation.eulerAngles;
                     rotation.y += m_Angle;
                     actor.Locomotion.Move(Quaternion.Euler(rotation) * Vector3.forward * m_Speed * Time.deltaTime);
-                });
+                })
+                .AddTo(disposable);
         }
     }
 }

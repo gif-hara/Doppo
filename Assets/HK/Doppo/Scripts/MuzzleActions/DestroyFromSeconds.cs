@@ -13,13 +13,14 @@ namespace HK.Doppo.MuzzleActions
         [SerializeField]
         private float m_Seconds = default;
 
-        public void Invoke(Actor actor)
+        public void Invoke(Actor actor, CompositeDisposable disposable)
         {
             actor.Events.TimerSafe(TimeSpan.FromSeconds(m_Seconds))
                 .Subscribe(_ =>
                 {
                     actor.Return();
-                });
+                })
+                .AddTo(disposable);
         }
     }
 }

@@ -1,5 +1,4 @@
-using UnityEngine;
-using UnityEngine.Assertions;
+using UniRx;
 
 namespace HK.Doppo.MuzzleActions
 {
@@ -8,6 +7,6 @@ namespace HK.Doppo.MuzzleActions
     /// </summary>
     public interface IMuzzleAction
     {
-        void Invoke(Actor actor);
+        void Invoke(Actor actor, CompositeDisposable disposable);
     }
 }

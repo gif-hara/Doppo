@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using HK.Doppo.TriggerSystems;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -15,11 +16,11 @@ namespace HK.Doppo.MuzzleActions
         [SerializeField]
         private List<Element> m_Elements = default;
 
-        public void Invoke(Vector3 position, Quaternion rotation)
+        public void Invoke(Vector3 position, Quaternion rotation, CompositeDisposable disposables)
         {
             foreach (var e in m_Elements)
             {
-                e.Fire(position, rotation);
+                e.Fire(position, rotation, disposables);
             }
         }
 
@@ -32,12 +33,12 @@ namespace HK.Doppo.MuzzleActions
             [SerializeReference, SubclassSelector(false, typeof(IMuzzleAction))]
             private List<IMuzzleAction> m_Triggers = default;
 
-            public void Fire(Vector3 position, Quaternion rotation)
+            public void Fire(Vector3 position, Quaternion rotation, CompositeDisposable disposables)
             {
                 var actor = m_Blueprint.Spawn(position, rotation);
                 foreach (var i in m_Triggers)
                 {
-                    i.Invoke(actor);
+                    i.Invoke(actor, disposables);
                 }
             }
         }

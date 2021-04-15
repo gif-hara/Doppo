@@ -81,6 +81,10 @@ namespace HK.Doppo
                         {
                             actor.MuzzleController.Fire(0);
                         }
+                        if (Input.GetAxis("Fire2") >= 1.0f)
+                        {
+                            actor.MuzzleController.Fire(1);
+                        }
                     }
                 })
                 .AddTo(disposables);
