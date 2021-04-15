@@ -59,5 +59,16 @@ namespace HK.Doppo
         {
             m_Pool.Return(this);
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            var target = other.GetComponentInParent<Actor>();
+            if (target == null)
+            {
+                return;
+            }
+
+            Events.OnTriggerEnterActor.OnNext(new ActorEvents.OnTriggerEnterActorData { owner = this, target = target });
+        }
     }
 }
