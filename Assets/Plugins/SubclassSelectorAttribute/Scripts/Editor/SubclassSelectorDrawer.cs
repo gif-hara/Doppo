@@ -18,7 +18,8 @@ public class SubclassSelectorDrawer : PropertyDrawer
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         if (property.propertyType != SerializedPropertyType.ManagedReference) return;
-        if(!initialized) {
+        if (!initialized)
+        {
             Initialize(property);
             GetCurrentTypeIndex(property.managedReferenceFullTypename);
             initialized = true;
@@ -36,7 +37,12 @@ public class SubclassSelectorDrawer : PropertyDrawer
     private void Initialize(SerializedProperty property)
     {
         SubclassSelectorAttribute utility = (SubclassSelectorAttribute)attribute;
-        GetAllInheritedTypes(GetType(property), utility.IsIncludeMono());
+        var type = utility.Type();
+        if (type == null)
+        {
+            type = GetType(property);
+        }
+        GetAllInheritedTypes(type, utility.IsIncludeMono());
         GetInheritedTypeNameArrays();
     }
 
@@ -79,41 +85,41 @@ public class SubclassSelectorDrawer : PropertyDrawer
         return popupPosition;
     }
 
-    public static Type GetType( SerializedProperty property )
+    public static Type GetType(SerializedProperty property)
     {
-	    const BindingFlags bindingAttr =
-			    BindingFlags.NonPublic |
-			    BindingFlags.Public |
-			    BindingFlags.FlattenHierarchy |
-			    BindingFlags.Instance
-		    ;
+        const BindingFlags bindingAttr =
+                BindingFlags.NonPublic |
+                BindingFlags.Public |
+                BindingFlags.FlattenHierarchy |
+                BindingFlags.Instance
+            ;
 
-	    var propertyPaths = property.propertyPath.Split( '.' );
-	    var parentType    = property.serializedObject.targetObject.GetType();
-	    var fieldInfo     = parentType.GetField( propertyPaths[ 0 ], bindingAttr );
-	    var fieldType     = fieldInfo.FieldType;
+        var propertyPaths = property.propertyPath.Split('.');
+        var parentType = property.serializedObject.targetObject.GetType();
+        var fieldInfo = parentType.GetField(propertyPaths[0], bindingAttr);
+        var fieldType = fieldInfo.FieldType;
 
-	    // 配列もしくはリストの場合
-	    if ( propertyPaths.Contains( "Array" ) )
-	    {
-		    // 配列の場合
-		    if ( fieldType.IsArray )
-		    {
-			    // GetElementType で要素の型を取得する
-			    var elementType = fieldType.GetElementType();
-			    return elementType;
-		    }
-		    // リストの場合
-		    else
-		    {
-			    // GetGenericArguments で要素の型を取得する
-			    var genericArguments = fieldType.GetGenericArguments();
-			    var elementType      = genericArguments[ 0 ];
-			    return elementType;
-		    }
-	    }
+        // 配列もしくはリストの場合
+        if (propertyPaths.Contains("Array"))
+        {
+            // 配列の場合
+            if (fieldType.IsArray)
+            {
+                // GetElementType で要素の型を取得する
+                var elementType = fieldType.GetElementType();
+                return elementType;
+            }
+            // リストの場合
+            else
+            {
+                // GetGenericArguments で要素の型を取得する
+                var genericArguments = fieldType.GetGenericArguments();
+                var elementType = genericArguments[0];
+                return elementType;
+            }
+        }
 
-	    return fieldType;
+        return fieldType;
     }
 }
 #endif

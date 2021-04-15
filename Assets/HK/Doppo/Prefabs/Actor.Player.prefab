@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -2986413144723482715}
   - component: {fileID: -3446601103605456809}
   - component: {fileID: -8538986996641930437}
+  - component: {fileID: 2815445951058963426}
   m_Layer: 0
   m_Name: Actor.Player
   m_TagString: Player
@@ -81,6 +82,18 @@ MonoBehaviour:
   m_Muzzles:
   - {fileID: 1748238503856155468}
   - {fileID: 4554457293713658142}
+--- !u!114 &2815445951058963426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452735667716711715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cacde0b5a03ee45e89ed4a62b6f0d120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7924335527411558856
 GameObject:
   m_ObjectHideFlags: 0

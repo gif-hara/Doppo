@@ -55,7 +55,7 @@ namespace HK.Doppo
                         var cameraRight = Vector3.Scale(cameraTransform.right, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
 
                         vector = (vector.z * cameraForward + vector.x * cameraRight).normalized;
-                        actor.CharacterController.Move(vector * Time.deltaTime * m_MoveSpeed);
+                        actor.Locomotion.Move(vector * Time.deltaTime * m_MoveSpeed);
                     }
 
                     // マウス座標からActorの向きを設定する

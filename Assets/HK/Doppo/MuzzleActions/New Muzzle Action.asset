@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3692761f4e941caa7ad980ebc6a435, type: 3}
   m_Name: New Muzzle Action
   m_EditorClassIdentifier: 
-  m_Triggers:
-  - id: 0
+  m_Elements:
+  - m_Blueprint: {fileID: 11400000, guid: 350d87ac6c7604f11b93fa98f28b87c3, type: 2}
+    m_Triggers:
+    - id: 0
   references:
     version: 1
     00000000:
-      type: {class: SpawnActor, ns: HK.Doppo.TriggerSystems, asm: Assembly-CSharp}
+      type: {class: Move, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
       data:
-        m_Prefab: {fileID: -2986413144723482715, guid: 67d4e7d99e821498294c6e8261aaf03d,
-          type: 3}
+        m_Angle: 0
+        m_Speed: 20

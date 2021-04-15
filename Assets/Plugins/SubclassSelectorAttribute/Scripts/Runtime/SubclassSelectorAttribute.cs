@@ -4,15 +4,20 @@ using UnityEngine;
 [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
 public class SubclassSelectorAttribute : PropertyAttribute
 {
-	bool m_includeMono;
+    bool m_includeMono;
 
-	public SubclassSelectorAttribute(bool includeMono = false)
-	{
-		m_includeMono = includeMono;
-	}
+    Type m_type;
 
-	public bool IsIncludeMono()
-	{
-		return m_includeMono;
-	}
+    public SubclassSelectorAttribute(bool includeMono = false, Type type = null)
+    {
+        m_includeMono = includeMono;
+        m_type = type;
+    }
+
+    public bool IsIncludeMono()
+    {
+        return m_includeMono;
+    }
+
+    public Type Type() => m_type;
 }

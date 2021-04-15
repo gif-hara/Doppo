@@ -1,3 +1,7 @@
+using System;
+using HK.Doppo.MuzzleActions;
+using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -8,7 +12,7 @@ namespace HK.Doppo
     /// </summary>
     public sealed class Actor : MonoBehaviour
     {
-        public CharacterController CharacterController
+        public IActorLocomotion Locomotion
         {
             get;
             private set;
@@ -22,11 +26,16 @@ namespace HK.Doppo
 
         private void Awake()
         {
-            CharacterController = GetComponent<CharacterController>();
-            Assert.IsNotNull(CharacterController);
+            Locomotion = GetComponent<IActorLocomotion>();
+            Assert.IsNotNull(Locomotion);
 
             MuzzleController = GetComponent<MuzzleController>();
             Assert.IsNotNull(MuzzleController);
+        }
+
+        public IObservable<Unit> UpdateSafeAsObservable()
+        {
+            return this.UpdateAsObservable().TakeUntilDisable(this);
         }
     }
 }

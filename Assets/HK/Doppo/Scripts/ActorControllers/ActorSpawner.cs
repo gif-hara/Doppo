@@ -9,12 +9,11 @@ namespace HK.Doppo
     public sealed class ActorSpawner : MonoBehaviour
     {
         [SerializeField]
-        private Actor m_Prefab;
+        private ActorBlueprint m_Blueprint;
 
         private void Start()
         {
-            var actor = Instantiate(m_Prefab, transform.position, transform.rotation);
-            GameEvents.SpawnedActor.OnNext(actor);
+            m_Blueprint.Spawn(transform.localPosition, transform.localRotation);
         }
     }
 }
