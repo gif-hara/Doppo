@@ -16,6 +16,7 @@ MonoBehaviour:
   - m_Blueprint: {fileID: 11400000, guid: 350d87ac6c7604f11b93fa98f28b87c3, type: 2}
     m_Triggers:
     - id: 0
+    - id: 1
   references:
     version: 1
     00000000:
@@ -23,3 +24,7 @@ MonoBehaviour:
       data:
         m_Angle: 0
         m_Speed: 20
+    00000001:
+      type: {class: DestroyFromSeconds, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
+      data:
+        m_Seconds: 1

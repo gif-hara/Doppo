@@ -19,7 +19,9 @@ namespace HK.Doppo
 
         public Actor Spawn(Vector3 position, Quaternion rotation)
         {
-            var instance = Instantiate(m_Actor, position, rotation);
+            var instance = m_Actor.Spawn();
+            instance.transform.localPosition = position;
+            instance.transform.localRotation = rotation;
             instance.MuzzleController.Setup(m_MuzzleActions);
 
             GameEvents.SpawnedActor.OnNext(instance);

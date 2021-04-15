@@ -1,4 +1,6 @@
+using System;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -9,11 +11,21 @@ namespace HK.Doppo
     /// </summary>
     public sealed class ActorEvents
     {
-        public readonly Subject<FireRequestData> FireRequest = new Subject<FireRequestData>();
+        private Actor m_Actor;
 
-        public sealed class FireRequestData
+        public ActorEvents(Actor actor)
         {
-            public int muzzleIndex;
+            m_Actor = actor;
+        }
+
+        public IObservable<Unit> UpdateSafeAsObservable()
+        {
+            return m_Actor.UpdateAsObservable().TakeUntilDisable(m_Actor);
+        }
+
+        public IObservable<long> TimerSafe(TimeSpan dueTime)
+        {
+            return Observable.Timer(dueTime).TakeUntilDisable(m_Actor);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace HK.Doppo.MuzzleActions
 
         public void Invoke(Actor actor)
         {
-            actor.UpdateSafeAsObservable()
+            actor.Events.UpdateSafeAsObservable()
                 .Subscribe(_ =>
                 {
                     var rotation = actor.transform.localRotation.eulerAngles;
