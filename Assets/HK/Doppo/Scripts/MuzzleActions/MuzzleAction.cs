@@ -19,12 +19,23 @@ namespace HK.Doppo.MuzzleActions
         [SerializeField]
         private List<Element> m_Elements = default;
 
+        private bool m_CanFire = true;
+
         public void Invoke(Vector3 position, Quaternion rotation, Actor owner, CompositeDisposable disposables)
         {
+            if (!m_CanFire)
+            {
+                return;
+            }
+
             foreach (var e in m_Elements)
             {
                 e.Fire(position, rotation, owner, disposables);
             }
+
+            m_CanFire = false;
+            owner.Events.TimerSafe(TimeSpan.FromSeconds(m_CoolTimeSeconds))
+                .Subscribe(_ => m_CanFire = true);
         }
 
         [Serializable]

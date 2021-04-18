@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3692761f4e941caa7ad980ebc6a435, type: 3}
   m_Name: New Muzzle Action
   m_EditorClassIdentifier: 
+  m_CoolTimeSeconds: 0.1
   m_Elements:
   - m_Blueprint: {fileID: 11400000, guid: 350d87ac6c7604f11b93fa98f28b87c3, type: 2}
     m_Triggers:
