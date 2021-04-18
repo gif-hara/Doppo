@@ -1,4 +1,5 @@
 using System;
+using HK.Doppo.MuzzleActions;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -37,6 +38,9 @@ namespace HK.Doppo
 
         private void Register(Actor actor)
         {
+            var muzzleController = actor.GetComponent<MuzzleController>();
+            Assert.IsNotNull($"{actor.name}に{typeof(MuzzleController)}が存在しません");
+
             Observable.EveryGameObjectUpdate()
                 .Subscribe(_ =>
                 {
@@ -79,12 +83,12 @@ namespace HK.Doppo
                     {
                         if (Input.GetAxis("Fire1") >= 1.0f)
                         {
-                            actor.MuzzleController.Fire(0);
+                            muzzleController.Fire(0);
                             Debug.Log($"Fire1 {Time.frameCount}");
                         }
                         if (Input.GetAxis("Fire2") >= 1.0f)
                         {
-                            actor.MuzzleController.Fire(1);
+                            muzzleController.Fire(1);
                         }
                     }
                 })

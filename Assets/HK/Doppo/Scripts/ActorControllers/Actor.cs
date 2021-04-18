@@ -20,12 +20,6 @@ namespace HK.Doppo
             private set;
         }
 
-        public MuzzleController MuzzleController
-        {
-            get;
-            private set;
-        }
-
         public ActorEvents Events
         {
             get;
@@ -51,8 +45,6 @@ namespace HK.Doppo
         {
             Locomotion = GetComponent<IActorLocomotion>();
             Assert.IsNotNull(Locomotion);
-
-            MuzzleController = GetComponent<MuzzleController>();
 
             Events = new ActorEvents(this);
         }
