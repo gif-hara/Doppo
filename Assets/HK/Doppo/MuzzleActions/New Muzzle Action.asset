@@ -32,3 +32,5 @@ MonoBehaviour:
         m_Seconds: 1
     00000002:
       type: {class: GiveDamage, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
+      data:
+        m_Power: 10

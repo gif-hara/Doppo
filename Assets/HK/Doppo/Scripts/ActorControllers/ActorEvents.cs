@@ -33,13 +33,30 @@ namespace HK.Doppo
             return OnTriggerEnterActorSubject.TakeUntilDisable(m_Actor);
         }
 
+        public IObservable<OnTakeDamageData> OnTakeDamageSafe()
+        {
+            return OnTakeDamageSubject.TakeUntilDisable(m_Actor);
+        }
+
         public Subject<OnTriggerEnterActorData> OnTriggerEnterActorSubject = new Subject<OnTriggerEnterActorData>();
+
+        public Subject<OnTakeDamageData> OnTakeDamageSubject = new Subject<OnTakeDamageData>();
 
         public class OnTriggerEnterActorData
         {
             public Actor owner;
 
             public Actor target;
+        }
+
+        public class OnTakeDamageData
+        {
+            /// <summary>
+            /// ダメージを与えた<see cref="Actor"/>
+            /// </summary>
+            public Actor giveDamageActor;
+
+            public int power;
         }
     }
 }

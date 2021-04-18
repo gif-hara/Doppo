@@ -14,4 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actor: {fileID: -2986413144723482715, guid: 15852ffb9bcd14243ae080dc96dc5263,
     type: 3}
-  m_MuzzleActions: []
+  m_SpawnActions:
+  - id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: SetupActorStatusController, ns: HK.Doppo, asm: Assembly-CSharp}
+      data:
+        m_Status:
+          hitPoint: 100

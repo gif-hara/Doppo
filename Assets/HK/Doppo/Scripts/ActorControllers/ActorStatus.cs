@@ -10,6 +10,11 @@ namespace HK.Doppo
     [Serializable]
     public sealed class ActorStatus
     {
-        public int m_HitPoint;
+        public int hitPoint;
+
+        public ActorStatus(ActorStatus other)
+        {
+            this.hitPoint = other.hitPoint;
+        }
     }
 }

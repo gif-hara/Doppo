@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using HK.Doppo.MuzzleActions;
 using HK.Framework;
-using UniRx;
-using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -30,8 +25,6 @@ namespace HK.Doppo
 
         private ObjectPool<Actor> m_Pool;
 
-        private readonly Dictionary<Type, IActorController> m_Controllers = new Dictionary<Type, IActorController>();
-
         public Actor Spawn()
         {
             var pool = m_Bundle.Get(this);
@@ -54,25 +47,12 @@ namespace HK.Doppo
             m_Pool.Return(this);
         }
 
-        public T Attach<T>() where T : IActorController, new()
+        public T GetComponentSafe<T>() where T : class
         {
-            var type = typeof(T);
-            if (m_Controllers.ContainsKey(type))
-            {
-                return (T)m_Controllers[type];
-            }
+            var component = GetComponent<T>();
+            Assert.IsNotNull(component, $"{this.name}に{typeof(T)}は存在しません");
 
-            var controller = new T();
-            controller.Setup(this);
-
-            m_Controllers.Add(type, controller);
-            return controller;
-        }
-
-        public T GetController<T>() where T : IActorController
-        {
-            m_Controllers.TryGetValue(typeof(T), out var value);
-            return (T)value;
+            return component;
         }
 
         private void OnTriggerEnter(Collider other)

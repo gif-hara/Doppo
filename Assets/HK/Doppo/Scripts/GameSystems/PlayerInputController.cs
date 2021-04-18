@@ -84,7 +84,6 @@ namespace HK.Doppo
                         if (Input.GetAxis("Fire1") >= 1.0f)
                         {
                             muzzleController.Fire(0);
-                            Debug.Log($"Fire1 {Time.frameCount}");
                         }
                         if (Input.GetAxis("Fire2") >= 1.0f)
                         {

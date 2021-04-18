@@ -17,7 +17,11 @@ namespace HK.Doppo.MuzzleActions
             spawnedActor.Events.OnTriggerEnterActorSafe()
                 .Subscribe(x =>
                 {
-                    x.target.Return();
+                    x.target.Events.OnTakeDamageSubject.OnNext(new ActorEvents.OnTakeDamageData
+                    {
+                        giveDamageActor = spawnedActorOwner,
+                        power = m_Power
+                    });
                 })
                 .AddTo(disposable);
         }
