@@ -7,6 +7,6 @@ namespace HK.Doppo.MuzzleActions
     /// </summary>
     public interface IMuzzleAction
     {
-        void Invoke(Actor actor, CompositeDisposable disposable);
+        void Invoke(Actor spawnedActor, Actor spawnedActorOwner, CompositeDisposable disposable);
     }
 }

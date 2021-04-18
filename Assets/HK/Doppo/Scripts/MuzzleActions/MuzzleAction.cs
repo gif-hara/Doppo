@@ -14,13 +14,16 @@ namespace HK.Doppo.MuzzleActions
     public sealed class MuzzleAction : ScriptableObject
     {
         [SerializeField]
+        private float m_CoolTimeSeconds = default;
+
+        [SerializeField]
         private List<Element> m_Elements = default;
 
-        public void Invoke(Vector3 position, Quaternion rotation, CompositeDisposable disposables)
+        public void Invoke(Vector3 position, Quaternion rotation, Actor owner, CompositeDisposable disposables)
         {
             foreach (var e in m_Elements)
             {
-                e.Fire(position, rotation, disposables);
+                e.Fire(position, rotation, owner, disposables);
             }
         }
 
@@ -33,12 +36,12 @@ namespace HK.Doppo.MuzzleActions
             [SerializeReference, SubclassSelector(false, typeof(IMuzzleAction))]
             private List<IMuzzleAction> m_Triggers = default;
 
-            public void Fire(Vector3 position, Quaternion rotation, CompositeDisposable disposables)
+            public void Fire(Vector3 position, Quaternion rotation, Actor spawnedActorOwner, CompositeDisposable disposables)
             {
                 var actor = m_Blueprint.Spawn(position, rotation);
                 foreach (var i in m_Triggers)
                 {
-                    i.Invoke(actor, disposables);
+                    i.Invoke(actor, spawnedActorOwner, disposables);
                 }
             }
         }

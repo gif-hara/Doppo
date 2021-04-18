@@ -15,14 +15,14 @@ namespace HK.Doppo.MuzzleActions
         [SerializeField]
         private float m_Speed = default;
 
-        public void Invoke(Actor actor, CompositeDisposable disposable)
+        public void Invoke(Actor spawnedActor, Actor spawnedActorOwner, CompositeDisposable disposable)
         {
-            actor.Events.UpdateSafeAsObservable()
+            spawnedActor.Events.UpdateSafeAsObservable()
                 .Subscribe(_ =>
                 {
-                    var rotation = actor.transform.localRotation.eulerAngles;
+                    var rotation = spawnedActor.transform.localRotation.eulerAngles;
                     rotation.y += m_Angle;
-                    actor.Locomotion.Move(Quaternion.Euler(rotation) * Vector3.forward * m_Speed * Time.deltaTime);
+                    spawnedActor.Locomotion.Move(Quaternion.Euler(rotation) * Vector3.forward * m_Speed * Time.deltaTime);
                 })
                 .AddTo(disposable);
         }

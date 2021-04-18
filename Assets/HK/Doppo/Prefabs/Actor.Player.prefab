@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3446601103605456809}
   - component: {fileID: -8538986996641930437}
   - component: {fileID: 2815445951058963426}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Actor.Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1748238503856155468}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4554457293713658142}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,6 +161,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1452735667716711714}
     m_Modifications:
+    - target: {fileID: 2494548069619989221, guid: 8d97138d1c05848c1be61931c1bf2126,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3162778111867195408, guid: 8d97138d1c05848c1be61931c1bf2126,
         type: 3}
       propertyPath: m_RootOrder
@@ -220,6 +225,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162778111867195409, guid: 8d97138d1c05848c1be61931c1bf2126,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162778112531659241, guid: 8d97138d1c05848c1be61931c1bf2126,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d97138d1c05848c1be61931c1bf2126, type: 3}

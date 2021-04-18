@@ -28,7 +28,12 @@ namespace HK.Doppo
             return Observable.Timer(dueTime).TakeUntilDisable(m_Actor);
         }
 
-        public Subject<OnTriggerEnterActorData> OnTriggerEnterActor = new Subject<OnTriggerEnterActorData>();
+        public IObservable<OnTriggerEnterActorData> OnTriggerEnterActorSafe()
+        {
+            return OnTriggerEnterActorSubject.TakeUntilDisable(m_Actor);
+        }
+
+        public Subject<OnTriggerEnterActorData> OnTriggerEnterActorSubject = new Subject<OnTriggerEnterActorData>();
 
         public class OnTriggerEnterActorData
         {

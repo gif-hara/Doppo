@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -17,6 +18,14 @@ namespace HK.Doppo.MuzzleActions
 
         private CompositeDisposable m_Disposable = new CompositeDisposable();
 
+        private Actor m_Actor = default;
+
+        private void Awake()
+        {
+            m_Actor = GetComponent<Actor>();
+            Assert.IsNotNull(m_Actor);
+        }
+
         private void OnDestroy()
         {
             m_Disposable.Dispose();
@@ -24,13 +33,13 @@ namespace HK.Doppo.MuzzleActions
 
         public void Setup(List<MuzzleAction> muzzleActions)
         {
-            m_MuzzleActions = muzzleActions;
+            m_MuzzleActions = muzzleActions.Select(x => Instantiate(x)).ToList();
         }
 
         public void Fire(int muzzleIndex)
         {
             var muzzle = m_Muzzles[muzzleIndex];
-            m_MuzzleActions[muzzleIndex].Invoke(muzzle.position, muzzle.rotation, m_Disposable);
+            m_MuzzleActions[muzzleIndex].Invoke(muzzle.position, muzzle.rotation, m_Actor, m_Disposable);
         }
     }
 }

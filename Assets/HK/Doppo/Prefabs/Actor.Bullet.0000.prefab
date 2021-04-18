@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: -8538986996641930437}
   - component: {fileID: 1868070604137508290}
   - component: {fileID: 516646755259446124}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Actor.Bullet.0000
-  m_TagString: Untagged
+  m_TagString: Player/Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4976496687321332296}
   - component: {fileID: 4106397457160468479}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,6 +206,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Model.Bullet.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162778111867195409, guid: 744b9203f22fa4179a709ffe07a51723,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5886616442653039279, guid: 744b9203f22fa4179a709ffe07a51723,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 744b9203f22fa4179a709ffe07a51723, type: 3}

@@ -68,7 +68,7 @@ namespace HK.Doppo
                 return;
             }
 
-            Events.OnTriggerEnterActor.OnNext(new ActorEvents.OnTriggerEnterActorData { owner = this, target = target });
+            Events.OnTriggerEnterActorSubject.OnNext(new ActorEvents.OnTriggerEnterActorData { owner = this, target = target });
         }
     }
 }
