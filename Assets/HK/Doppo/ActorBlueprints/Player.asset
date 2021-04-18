@@ -14,6 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actor: {fileID: -2986413144723482715, guid: 34805e8a29d994cc3b62ee1daeda03e3,
     type: 3}
+  m_SpawnActions:
+  - id: 0
   m_MuzzleActions:
   - {fileID: 11400000, guid: d42f4f2c4a300405dbb5606495affa59, type: 2}
   - {fileID: 11400000, guid: d42f4f2c4a300405dbb5606495affa59, type: 2}
+  references:
+    version: 1
+    00000000:
+      type: {class: AttachMuzzleController, ns: HK.Doppo, asm: Assembly-CSharp}
+      data:
+        m_Actions:
+        - {fileID: 11400000, guid: d42f4f2c4a300405dbb5606495affa59, type: 2}

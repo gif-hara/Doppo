@@ -14,15 +14,19 @@ namespace HK.Doppo
         [SerializeField]
         private Actor m_Actor = default;
 
-        [SerializeField]
-        private List<MuzzleAction> m_MuzzleActions = default;
+        [SerializeReference, SubclassSelector]
+        private List<IActorSpawnAction> m_SpawnActions = default;
 
         public Actor Spawn(Vector3 position, Quaternion rotation)
         {
             var instance = m_Actor.Spawn();
             instance.transform.localPosition = position;
             instance.transform.localRotation = rotation;
-            instance.MuzzleController.Setup(m_MuzzleActions);
+
+            foreach (var i in m_SpawnActions)
+            {
+                i.Invoke(instance);
+            }
 
             GameEvents.SpawnedActor.OnNext(instance);
 
