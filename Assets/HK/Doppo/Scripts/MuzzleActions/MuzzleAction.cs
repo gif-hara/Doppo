@@ -19,6 +19,9 @@ namespace HK.Doppo.MuzzleActions
         [SerializeField]
         private List<Element> m_Elements = default;
 
+        [SerializeReference, SubclassSelector]
+        private List<IMuzzleModifier> m_Modifiers = default;
+
         private bool m_CanFire = true;
 
         public void Invoke(Vector3 position, Quaternion rotation, Actor owner, CompositeDisposable disposables)
@@ -30,7 +33,7 @@ namespace HK.Doppo.MuzzleActions
 
             foreach (var e in m_Elements)
             {
-                e.Fire(position, rotation, owner, disposables);
+                e.Fire(position, rotation, owner, m_Modifiers, disposables);
             }
 
             m_CanFire = false;
@@ -47,12 +50,12 @@ namespace HK.Doppo.MuzzleActions
             [SerializeReference, SubclassSelector(false, typeof(IMuzzleAction))]
             private List<IMuzzleAction> m_Triggers = default;
 
-            public void Fire(Vector3 position, Quaternion rotation, Actor spawnedActorOwner, CompositeDisposable disposables)
+            public void Fire(Vector3 position, Quaternion rotation, Actor spawnedActorOwner, List<IMuzzleModifier> modifiers, CompositeDisposable disposables)
             {
                 var actor = m_Blueprint.Spawn(position, rotation);
                 foreach (var i in m_Triggers)
                 {
-                    i.Invoke(actor, spawnedActorOwner, disposables);
+                    i.Invoke(actor, spawnedActorOwner, modifiers, disposables);
                 }
             }
         }

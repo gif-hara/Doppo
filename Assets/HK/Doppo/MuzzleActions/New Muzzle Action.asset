@@ -19,6 +19,7 @@ MonoBehaviour:
     - id: 0
     - id: 1
     - id: 2
+  m_Modifiers: []
   references:
     version: 1
     00000000:

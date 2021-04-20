@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UniRx;
 
 namespace HK.Doppo.MuzzleActions
@@ -7,6 +8,6 @@ namespace HK.Doppo.MuzzleActions
     /// </summary>
     public interface IMuzzleAction
     {
-        void Invoke(Actor spawnedActor, Actor spawnedActorOwner, CompositeDisposable disposable);
+        void Invoke(Actor spawnedActor, Actor spawnedActorOwner, List<IMuzzleModifier> modifiers, CompositeDisposable disposable);
     }
 }
