@@ -8,7 +8,7 @@ namespace HK.Doppo.MuzzleActions
     /// <summary>
     /// 
     /// </summary>
-    public sealed class GiveDamage : IMuzzleAction
+    public sealed class GiveDamageOnTriggerEnterActor : IMuzzleAction
     {
         [SerializeField]
         private int m_Power = default;

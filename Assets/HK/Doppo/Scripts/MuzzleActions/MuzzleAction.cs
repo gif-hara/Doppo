@@ -37,7 +37,12 @@ namespace HK.Doppo.MuzzleActions
             }
 
             m_CanFire = false;
-            owner.Events.TimerSafe(TimeSpan.FromSeconds(m_CoolTimeSeconds))
+            var coolTimeData = new IMuzzleModifier.OnCoolTimeData();
+            foreach (var i in m_Modifiers)
+            {
+                i.OnCoolTime(coolTimeData);
+            }
+            owner.Events.TimerSafe(TimeSpan.FromSeconds(m_CoolTimeSeconds * coolTimeData.coolTimeRate))
                 .Subscribe(_ => m_CanFire = true);
         }
 

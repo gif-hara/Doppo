@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e3692761f4e941caa7ad980ebc6a435, type: 3}
-  m_Name: New Muzzle Action
+  m_Name: TestMuzzle.0000
   m_EditorClassIdentifier: 
   m_CoolTimeSeconds: 0.1
   m_Elements:
@@ -19,19 +19,27 @@ MonoBehaviour:
     - id: 0
     - id: 1
     - id: 2
+    - id: 3
   m_Modifiers: []
   references:
     version: 1
     00000000:
       type: {class: Move, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
       data:
-        m_Angle: 0
+        m_AngleSelector:
+          id: 4
         m_Speed: 100
     00000001:
+      type: {class: GiveDamageOnTriggerEnterActor, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
+      data:
+        m_Power: 10
+    00000002:
       type: {class: DestroyFromSeconds, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
       data:
         m_Seconds: 1
-    00000002:
-      type: {class: GiveDamage, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
+    00000003:
+      type: {class: DestroyFromOnTriggerEnter, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
+    00000004:
+      type: {class: MoveAngleConstant, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
       data:
-        m_Power: 10
+        m_Angle: 0

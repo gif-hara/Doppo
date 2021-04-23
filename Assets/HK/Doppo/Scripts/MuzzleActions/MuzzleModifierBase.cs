@@ -8,6 +8,10 @@ namespace HK.Doppo.MuzzleActions
     /// </summary>
     public abstract class MuzzleModifierBase : IMuzzleModifier
     {
+        public virtual void OnCoolTime(IMuzzleModifier.OnCoolTimeData data)
+        {
+        }
+
         public virtual void OnGiveDamage(IMuzzleModifier.OnGiveDamageData data)
         {
         }
