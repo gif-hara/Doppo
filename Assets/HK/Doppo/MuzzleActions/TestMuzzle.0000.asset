@@ -20,6 +20,7 @@ MonoBehaviour:
     - id: 1
     - id: 2
     - id: 3
+    - id: 4
   m_Modifiers: []
   references:
     version: 1
@@ -27,7 +28,7 @@ MonoBehaviour:
       type: {class: Move, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
       data:
         m_AngleSelector:
-          id: 4
+          id: 5
         m_Speed: 100
     00000001:
       type: {class: GiveDamageOnTriggerEnterActor, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
@@ -38,8 +39,15 @@ MonoBehaviour:
       data:
         m_Seconds: 1
     00000003:
-      type: {class: DestroyFromOnTriggerEnter, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
+      type: {class: InstantiateOnTriggerEnterActor, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
+      data:
+        m_Prefab: {fileID: 4894745150737085342, guid: d1c502096fb2f46099c4a841d0d737d8,
+          type: 3}
     00000004:
+      type: {class: DestroyFromOnTriggerEnter, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
+      data:
+        m_Penetrate: 1
+    00000005:
       type: {class: MoveAngleConstant, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
       data:
         m_Angle: 0

@@ -22,4 +22,4 @@ MonoBehaviour:
       type: {class: SetupActorStatusController, ns: HK.Doppo, asm: Assembly-CSharp}
       data:
         m_Status:
-          hitPoint: 100
+          hitPoint: 99999

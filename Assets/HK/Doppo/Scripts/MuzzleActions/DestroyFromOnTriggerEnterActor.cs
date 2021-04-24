@@ -11,12 +11,22 @@ namespace HK.Doppo.MuzzleActions
     /// </summary>
     public sealed class DestroyFromOnTriggerEnter : IMuzzleAction
     {
+        [SerializeField]
+        private int m_Penetrate = default;
+
+        private int m_CurrentPenetrate = 0;
+
         public void Invoke(Actor spawnedActor, Actor spawnedActorOwner, List<IMuzzleModifier> modifiers, CompositeDisposable disposable)
         {
+            m_CurrentPenetrate = m_Penetrate;
             spawnedActor.Events.OnTriggerEnterActorSafe()
                 .Subscribe(_ =>
                 {
-                    spawnedActor.Return();
+                    m_CurrentPenetrate--;
+                    if (m_CurrentPenetrate <= 0)
+                    {
+                        spawnedActor.Return();
+                    }
                 })
                 .AddTo(disposable);
         }

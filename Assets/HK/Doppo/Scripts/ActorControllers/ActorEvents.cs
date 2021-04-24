@@ -47,6 +47,8 @@ namespace HK.Doppo
             public Actor owner;
 
             public Actor target;
+
+            public Collider targetCollider;
         }
 
         public class OnTakeDamageData
