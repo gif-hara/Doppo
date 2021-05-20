@@ -22,7 +22,7 @@ namespace HK.Doppo.MuzzleActions
             spawnedActor.Events.UpdateSafeAsObservable()
                 .Subscribe(_ =>
                 {
-                    var rotation = spawnedActor.transform.localRotation.eulerAngles;
+                    var rotation = spawnedActor.transform.rotation.eulerAngles;
                     rotation.y += angle;
                     spawnedActor.Locomotion.Move(Quaternion.Euler(rotation) * Vector3.forward * m_Speed * Time.deltaTime);
                 })

@@ -24,5 +24,10 @@ namespace HK.Doppo
         {
             Rigidbody.MovePosition(Rigidbody.transform.position + vector);
         }
+
+        public void Rotation(Quaternion addValue)
+        {
+            Rigidbody.MoveRotation(Rigidbody.transform.rotation * addValue);
+        }
     }
 }

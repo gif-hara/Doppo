@@ -9,5 +9,7 @@ namespace HK.Doppo
     public interface IActorLocomotion
     {
         void Move(Vector3 vector);
+
+        void Rotation(Quaternion addValue);
     }
 }
