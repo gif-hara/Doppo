@@ -44,7 +44,7 @@ MonoBehaviour:
         m_Prefab: {fileID: 4894745150737085342, guid: d1c502096fb2f46099c4a841d0d737d8,
           type: 3}
     00000004:
-      type: {class: DestroyFromOnTriggerEnter, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
+      type: {class: DestroyFromOnTriggerEnterActor, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
       data:
         m_Penetrate: 1
     00000005:

@@ -9,7 +9,7 @@ namespace HK.Doppo.MuzzleActions
     /// <summary>
     /// 
     /// </summary>
-    public sealed class DestroyFromOnTriggerEnter : IMuzzleAction
+    public sealed class DestroyFromOnTriggerEnterActor : IMuzzleAction
     {
         [SerializeField]
         private int m_Penetrate = default;
