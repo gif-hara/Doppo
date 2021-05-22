@@ -29,12 +29,6 @@ namespace HK.Doppo.MuzzleActions
                     spawnedActor.Locomotion.Move(velocity);
                 })
                 .AddTo(disposable);
-            spawnedActor.Events.OnTriggerEnterActorSafe()
-                .Subscribe(_ =>
-                {
-                    Debug.Log($"TotalTime = {Time.realtimeSinceStartup - startTime}");
-                })
-                .AddTo(disposable);
         }
     }
 }
