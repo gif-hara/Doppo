@@ -22,12 +22,12 @@ namespace HK.Doppo
 
         public void Move(Vector3 vector)
         {
-            Rigidbody.MovePosition(Rigidbody.transform.position + vector);
+            Rigidbody.position += vector;
         }
 
         public void Rotation(Quaternion addValue)
         {
-            Rigidbody.MoveRotation(Rigidbody.transform.rotation * addValue);
+            Rigidbody.rotation *= addValue;
         }
     }
 }
