@@ -78,7 +78,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &516646755259446124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4976496687321332296}
-  - component: {fileID: 4106397457160468479}
+  - component: {fileID: 8750849730011707413}
   m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
@@ -122,8 +122,8 @@ Transform:
   m_Father: {fileID: 1452735667716711714}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &4106397457160468479
-SphereCollider:
+--- !u!65 &8750849730011707413
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -133,8 +133,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 1, z: 1.5}
+  m_Center: {x: 0, y: 0, z: -0.62}
 --- !u!1001 &2402354077231951732
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -16,6 +16,9 @@ namespace HK.Doppo
         [SerializeField]
         private GameCameraController m_GameCameraController = default;
 
+        [SerializeField]
+        private int m_TargetFrameRate = default;
+
         private void Awake()
         {
             m_PlayerInputController.Setup();
@@ -28,6 +31,8 @@ namespace HK.Doppo
                     m_PlayerInputController.Dispose();
                     m_GameCameraController.Dispose();
                 });
+
+            Application.targetFrameRate = m_TargetFrameRate;
         }
     }
 }

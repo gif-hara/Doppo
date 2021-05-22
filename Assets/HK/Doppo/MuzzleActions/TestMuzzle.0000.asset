@@ -29,7 +29,7 @@ MonoBehaviour:
       data:
         m_AngleSelector:
           id: 5
-        m_Speed: 100
+        m_Speed: 50
     00000001:
       type: {class: GiveDamageOnTriggerEnterActor, ns: HK.Doppo.MuzzleActions, asm: Assembly-CSharp}
       data:
