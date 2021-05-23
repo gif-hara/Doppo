@@ -33,14 +33,21 @@ namespace HK.Doppo
             return OnTriggerEnterActorSubject.TakeUntilDisable(m_Actor);
         }
 
+        public IObservable<OnTriggerEnterStageData> OnTriggerEnterStageSafe()
+        {
+            return OnTriggerEnterStageSubject.TakeUntilDisable(m_Actor);
+        }
+
         public IObservable<OnTakeDamageData> OnTakeDamageSafe()
         {
             return OnTakeDamageSubject.TakeUntilDisable(m_Actor);
         }
 
-        public Subject<OnTriggerEnterActorData> OnTriggerEnterActorSubject = new Subject<OnTriggerEnterActorData>();
+        public readonly Subject<OnTriggerEnterActorData> OnTriggerEnterActorSubject = new Subject<OnTriggerEnterActorData>();
 
-        public Subject<OnTakeDamageData> OnTakeDamageSubject = new Subject<OnTakeDamageData>();
+        public readonly Subject<OnTriggerEnterStageData> OnTriggerEnterStageSubject = new Subject<OnTriggerEnterStageData>();
+
+        public readonly Subject<OnTakeDamageData> OnTakeDamageSubject = new Subject<OnTakeDamageData>();
 
         public class OnTriggerEnterActorData
         {
@@ -48,6 +55,11 @@ namespace HK.Doppo
 
             public Actor target;
 
+            public Collider targetCollider;
+        }
+
+        public class OnTriggerEnterStageData
+        {
             public Collider targetCollider;
         }
 

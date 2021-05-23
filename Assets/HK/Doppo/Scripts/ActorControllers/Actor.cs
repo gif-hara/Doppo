@@ -58,17 +58,23 @@ namespace HK.Doppo
         private void OnTriggerEnter(Collider other)
         {
             var target = other.GetComponentInParent<Actor>();
-            if (target == null)
+            if (target != null)
             {
-                return;
+                Events.OnTriggerEnterActorSubject.OnNext(new ActorEvents.OnTriggerEnterActorData
+                {
+                    owner = this,
+                    target = target,
+                    targetCollider = other
+                });
             }
 
-            Events.OnTriggerEnterActorSubject.OnNext(new ActorEvents.OnTriggerEnterActorData
+            if (other.gameObject.layer == Layer.Index.Stage)
             {
-                owner = this,
-                target = target,
-                targetCollider = other
-            });
+                Events.OnTriggerEnterStageSubject.OnNext(new ActorEvents.OnTriggerEnterStageData
+                {
+                    targetCollider = other
+                });
+            }
         }
     }
 }
