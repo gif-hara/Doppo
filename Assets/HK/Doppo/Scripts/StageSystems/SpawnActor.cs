@@ -20,9 +20,10 @@ namespace HK.Doppo.StageSystems.Events
         {
             return Observable.Defer(() =>
             {
-                m_Blueprint.Spawn(m_SpawnPoint.position, m_SpawnPoint.rotation);
-
-                return Observable.ReturnUnit();
+                return m_Blueprint
+                .Spawn(m_SpawnPoint.position, m_SpawnPoint.rotation)
+                .Events
+                .OnDeadSafe();
             });
         }
     }

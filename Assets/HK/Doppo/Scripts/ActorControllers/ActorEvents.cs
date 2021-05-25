@@ -43,11 +43,15 @@ namespace HK.Doppo
             return OnTakeDamageSubject.TakeUntilDisable(m_Actor);
         }
 
+        public IObservable<Unit> OnDeadSafe() => OnDeadSubject.TakeUntilDisable(m_Actor);
+
         public readonly Subject<OnTriggerEnterActorData> OnTriggerEnterActorSubject = new Subject<OnTriggerEnterActorData>();
 
         public readonly Subject<OnTriggerEnterStageData> OnTriggerEnterStageSubject = new Subject<OnTriggerEnterStageData>();
 
         public readonly Subject<OnTakeDamageData> OnTakeDamageSubject = new Subject<OnTakeDamageData>();
+
+        public readonly Subject<Unit> OnDeadSubject = new Subject<Unit>();
 
         public class OnTriggerEnterActorData
         {

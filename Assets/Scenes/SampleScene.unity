@@ -186,6 +186,7 @@ Transform:
   - {fileID: 3897950103747946579}
   - {fileID: 1987132751}
   - {fileID: 687583807}
+  - {fileID: 1221389151}
   - {fileID: 156030749}
   - {fileID: 463237000}
   m_Father: {fileID: 112854778}
@@ -1089,7 +1090,7 @@ Transform:
   m_LocalScale: {x: 1, y: 10, z: 4.69}
   m_Children: []
   m_Father: {fileID: 72203377}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &156030750
 BoxCollider:
@@ -1471,7 +1472,7 @@ Transform:
   m_LocalScale: {x: 1, y: 10, z: 4.69}
   m_Children: []
   m_Father: {fileID: 72203377}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &463237001
 BoxCollider:
@@ -1664,7 +1665,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Events:
   - id: 0
-  m_OnCompletedEvents: []
+  m_OnCompletedEvents:
+  - {fileID: 1221389152}
   references:
     version: 1
     00000000:
@@ -1753,6 +1755,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1221389150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1221389151}
+  - component: {fileID: 1221389152}
+  m_Layer: 10
+  m_Name: Event (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1221389151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221389150}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 72203377}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1221389152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221389150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b88383e71d454fc19d57fafe6861dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+  - id: 0
+  - id: 1
+  m_OnCompletedEvents: []
+  references:
+    version: 1
+    00000000:
+      type: {class: SetActiveGameObject, ns: HK.Doppo.StageSystems.Events, asm: Assembly-CSharp}
+      data:
+        m_Target: {fileID: 156030748}
+        m_IsActive: 0
+    00000001:
+      type: {class: SetActiveGameObject, ns: HK.Doppo.StageSystems.Events, asm: Assembly-CSharp}
+      data:
+        m_Target: {fileID: 463236999}
+        m_IsActive: 0
 --- !u!1 &1541004588
 GameObject:
   m_ObjectHideFlags: 0

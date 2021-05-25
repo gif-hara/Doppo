@@ -25,9 +25,9 @@ namespace HK.Doppo
                     Current.hitPoint -= x.power;
                     if (Current.hitPoint <= 0)
                     {
+                        actor.Events.OnDeadSubject.OnNext(Unit.Default);
                         actor.Return();
                     }
-                    Debug.Log(Current.hitPoint);
                 });
         }
     }
