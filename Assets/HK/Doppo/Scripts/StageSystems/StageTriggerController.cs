@@ -12,13 +12,16 @@ namespace HK.Doppo.StageSystems
     public sealed class StageTriggerController : MonoBehaviour
     {
         [SerializeField]
-        private StageEventHolder m_Event = default;
+        private List<StageEventHolder> m_OnTriggerEnterPlayerEvents = default;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.layer == Layer.Index.Player)
             {
-                m_Event.Invoke();
+                foreach (var i in m_OnTriggerEnterPlayerEvents)
+                {
+                    i.Invoke();
+                }
             }
         }
     }

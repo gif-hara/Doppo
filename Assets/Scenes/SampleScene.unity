@@ -1631,15 +1631,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b88383e71d454fc19d57fafe6861dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OnTriggerEnterPlayerEvents:
+  m_Events:
   - id: 0
-  m_OnCompletedEvent: {fileID: 0}
+  m_OnCompletedEvents: []
   references:
     version: 1
     00000000:
       type: {class: Log, ns: HK.Doppo.StageSystems.Events, asm: Assembly-CSharp}
       data:
-        m_Message: Event2
+        m_Message: World
 --- !u!1 &1082268940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,15 +1871,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b88383e71d454fc19d57fafe6861dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OnTriggerEnterPlayerEvents:
+  m_Events:
   - id: 0
-  m_OnCompletedEvent: {fileID: 687583808}
+  m_OnCompletedEvents:
+  - {fileID: 687583808}
   references:
     version: 1
     00000000:
       type: {class: Log, ns: HK.Doppo.StageSystems.Events, asm: Assembly-CSharp}
       data:
-        m_Message: Event1
+        m_Message: Hello
 --- !u!1 &2111819207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,17 +2009,17 @@ PrefabInstance:
     - target: {fileID: 1776417625665420005, guid: 9fb6281d91b9a4f71b574eee3e97e840,
         type: 3}
       propertyPath: m_OnTriggerEnterPlayerEvents.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1776417625665420005, guid: 9fb6281d91b9a4f71b574eee3e97e840,
         type: 3}
       propertyPath: m_OnTriggerEnterPlayerEvents.Array.data[0]
-      value: Assembly-CSharp HK.Doppo.StageSystems.Events.SetActiveGameObject
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 1987132752}
     - target: {fileID: 1776417625665420005, guid: 9fb6281d91b9a4f71b574eee3e97e840,
         type: 3}
       propertyPath: m_OnTriggerEnterPlayerEvents.Array.data[1]
-      value: Assembly-CSharp HK.Doppo.StageSystems.Events.SetActiveGameObject
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1776417625665420005, guid: 9fb6281d91b9a4f71b574eee3e97e840,
         type: 3}

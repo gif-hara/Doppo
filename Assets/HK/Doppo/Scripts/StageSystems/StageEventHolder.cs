@@ -14,27 +14,25 @@ namespace HK.Doppo.StageSystems
     public sealed class StageEventHolder : MonoBehaviour
     {
         [SerializeReference, SubclassSelector(false, typeof(IStageTriggerEvent))]
-        private List<IStageTriggerEvent> m_OnTriggerEnterPlayerEvents = default;
+        private List<IStageTriggerEvent> m_Events = default;
 
         [SerializeField]
-        private StageEventHolder m_OnCompletedEvent = default;
+        private List<StageEventHolder> m_OnCompletedEvents = default;
 
         public void Invoke()
         {
-            WhenAll(m_OnTriggerEnterPlayerEvents)
+            m_Events
+                .Select(x => x.Invoke())
+                .WhenAll()
                 .DoOnCompleted(() =>
                 {
-                    m_OnCompletedEvent?.Invoke();
+                    foreach (var i in m_OnCompletedEvents)
+                    {
+                        i.Invoke();
+                    }
                 })
                 .Subscribe()
                 .AddTo(this);
-        }
-
-        private IObservable<Unit> WhenAll(List<IStageTriggerEvent> events)
-        {
-            return events
-                .Select(x => x.Invoke())
-                .WhenAll();
         }
     }
 }
