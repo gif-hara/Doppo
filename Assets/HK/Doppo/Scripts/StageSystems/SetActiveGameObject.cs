@@ -1,3 +1,5 @@
+using System;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -14,9 +16,14 @@ namespace HK.Doppo.StageSystems.Events
         [SerializeField]
         private bool m_IsActive = default;
 
-        public void Invoke()
+        public IObservable<Unit> Invoke()
         {
-            m_Target.SetActive(m_IsActive);
+            return Observable.Defer(() =>
+            {
+                m_Target.SetActive(m_IsActive);
+
+                return Observable.ReturnUnit();
+            });
         }
     }
 }

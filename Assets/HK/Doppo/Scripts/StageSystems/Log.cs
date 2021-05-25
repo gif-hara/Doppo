@@ -1,3 +1,5 @@
+using System;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -11,9 +13,14 @@ namespace HK.Doppo.StageSystems.Events
         [SerializeField]
         private string m_Message = default;
 
-        public void Invoke()
+        public IObservable<Unit> Invoke()
         {
-            Debug.Log(m_Message);
+            return Observable.Defer(() =>
+            {
+                Debug.Log(m_Message);
+
+                return Observable.ReturnUnit();
+            });
         }
     }
 }

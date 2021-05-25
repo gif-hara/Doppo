@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HK.Doppo.StageSystems.Events;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -19,7 +20,7 @@ namespace HK.Doppo.StageSystems
             {
                 foreach (var i in m_OnTriggerEnterPlayerEvents)
                 {
-                    i.Invoke();
+                    i.Invoke().Subscribe();
                 }
             }
         }

@@ -1,3 +1,5 @@
+using System;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -8,6 +10,6 @@ namespace HK.Doppo.StageSystems.Events
     /// </summary>
     public interface IStageTriggerEvent
     {
-        void Invoke();
+        IObservable<Unit> Invoke();
     }
 }
