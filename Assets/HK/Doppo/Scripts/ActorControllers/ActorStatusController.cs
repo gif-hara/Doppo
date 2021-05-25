@@ -13,8 +13,11 @@ namespace HK.Doppo
 
         public ActorStatus Current { get; private set; }
 
-        private void Awake()
+        public void Setup(ActorStatus actorStatus)
         {
+            Base = new ActorStatus(actorStatus);
+            Current = new ActorStatus(actorStatus);
+
             var actor = GetComponent<Actor>();
             actor.Events.OnTakeDamageSafe()
                 .Subscribe(x =>
@@ -24,13 +27,8 @@ namespace HK.Doppo
                     {
                         actor.Return();
                     }
+                    Debug.Log(Current.hitPoint);
                 });
-        }
-
-        public void Setup(ActorStatus actorStatus)
-        {
-            Base = new ActorStatus(actorStatus);
-            Current = new ActorStatus(actorStatus);
         }
     }
 }
