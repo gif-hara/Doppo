@@ -10,6 +10,8 @@ namespace HK.Doppo
     /// </summary>
     public sealed class GameManager : MonoBehaviour
     {
+        public static GameManager Instance { get; private set; }
+
         [SerializeField]
         private PlayerInputController m_PlayerInputController = default;
 
@@ -19,8 +21,12 @@ namespace HK.Doppo
         [SerializeField]
         private int m_TargetFrameRate = default;
 
+        public Actor Player { get; private set; }
+
         private void Awake()
         {
+            Instance = this;
+
             m_PlayerInputController.Setup();
 
             m_GameCameraController.Setup();
@@ -31,6 +37,14 @@ namespace HK.Doppo
                     m_PlayerInputController.Dispose();
                     m_GameCameraController.Dispose();
                 });
+
+            GameEvents.SpawnedActor
+                .Where(x => x.gameObject.tag == "Player")
+                .Subscribe(x =>
+                {
+                    Player = x;
+                })
+                .AddTo(this);
 
             Application.targetFrameRate = m_TargetFrameRate;
         }

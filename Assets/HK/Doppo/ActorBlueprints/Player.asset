@@ -16,6 +16,7 @@ MonoBehaviour:
     type: 3}
   m_SpawnActions:
   - id: 0
+  - id: 1
   references:
     version: 1
     00000000:
@@ -23,3 +24,9 @@ MonoBehaviour:
       data:
         m_Actions:
         - {fileID: 11400000, guid: d42f4f2c4a300405dbb5606495affa59, type: 2}
+    00000001:
+      type: {class: SetupActorStatusController, ns: HK.Doppo, asm: Assembly-CSharp}
+      data:
+        m_Status:
+          hitPoint: 100
+          moveSpeed: 10
