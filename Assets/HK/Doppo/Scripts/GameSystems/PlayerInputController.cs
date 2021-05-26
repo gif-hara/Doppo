@@ -15,9 +15,6 @@ namespace HK.Doppo
         [SerializeField]
         private Cameraman m_Cameraman = default;
 
-        [SerializeField]
-        private float m_MoveSpeed = default;
-
         private CompositeDisposable disposables = new CompositeDisposable();
 
         public void Setup()
@@ -41,6 +38,9 @@ namespace HK.Doppo
             var muzzleController = actor.GetComponent<MuzzleController>();
             Assert.IsNotNull($"{actor.name}に{typeof(MuzzleController)}が存在しません");
 
+            var actorStatus = actor.GetComponent<ActorStatusController>();
+            Assert.IsNotNull($"{actor.name}に{typeof(ActorStatusController)}が存在しません");
+
             Observable.EveryGameObjectUpdate()
                 .Subscribe(_ =>
                 {
@@ -59,7 +59,7 @@ namespace HK.Doppo
                         var cameraRight = Vector3.Scale(cameraTransform.right, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
 
                         vector = (vector.z * cameraForward + vector.x * cameraRight).normalized;
-                        actor.Locomotion.Move(vector * Time.deltaTime * m_MoveSpeed);
+                        actor.Locomotion.Move(vector * Time.deltaTime * actorStatus.Current.moveSpeed);
                     }
 
                     // マウス座標からActorの向きを設定する

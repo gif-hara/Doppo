@@ -12,9 +12,12 @@ namespace HK.Doppo
     {
         public int hitPoint;
 
+        public float moveSpeed;
+
         public ActorStatus(ActorStatus other)
         {
             this.hitPoint = other.hitPoint;
+            this.moveSpeed = other.moveSpeed;
         }
     }
 }
