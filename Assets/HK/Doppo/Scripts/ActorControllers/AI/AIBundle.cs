@@ -16,7 +16,7 @@ namespace HK.Doppo.ActorControllers.AISystems
         public string EntryPointName => this.entryPointName;
 
         [SerializeField]
-        private List<ScriptableAIElement> anyAIElements = default;
+        private List<AIElement> anyAIElements = default;
 
         /// <summary>
         /// 全ての状況下で実行される<see cref="ScriptableAIElement"/>
@@ -24,7 +24,7 @@ namespace HK.Doppo.ActorControllers.AISystems
         /// <remarks>
         /// 常に実行されるので<see cref="IAIElement.Exit(Actor, ActorAIController)"/>は死亡時のみ実行されるので注意が必要です
         /// </remarks>
-        public IReadOnlyList<ScriptableAIElement> AnyAIElements => this.anyAIElements;
+        public IReadOnlyList<AIElement> AnyAIElements => this.anyAIElements;
 
         [SerializeField]
         private List<Element> elements = default;
@@ -45,8 +45,8 @@ namespace HK.Doppo.ActorControllers.AISystems
             public string Name => this.name;
 
             [SerializeField]
-            private List<ScriptableAIElement> aiElements = default;
-            public IReadOnlyList<ScriptableAIElement> AIElements => this.aiElements;
+            private List<AIElement> aiElements = default;
+            public IReadOnlyList<AIElement> AIElements => this.aiElements;
         }
     }
 }

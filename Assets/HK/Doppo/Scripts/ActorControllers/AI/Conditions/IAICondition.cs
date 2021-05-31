@@ -11,6 +11,6 @@ namespace HK.Doppo.ActorControllers.AISystems
         /// <summary>
         /// 条件を満たした場合に発行される<see cref="IObservable{Unit}"/>を返す
         /// </summary>
-        IObservable<Unit> Satisfy(Actor owner, ActorAIController ownerAI);
+        IObservable<Unit> Evalute(Actor owner, ActorAIController ownerAI);
     }
 }

@@ -10,10 +10,10 @@ namespace HK.Doppo.ActorControllers.AISystems
     /// <summary>
     /// <see cref="ScriptableObject"/>で作成可能な<see cref="IAIElement"/>
     /// </summary>
-    public abstract class ScriptableAIElement : ScriptableObject, IAIElement
+    public abstract class AIElement : IAIElement
     {
         [SerializeField]
-        private List<ScriptableAICondition> conditions = default;
+        private List<AICondition> conditions = default;
 
         protected List<IObservable<Unit>> instanceConditions = null;
 
@@ -26,8 +26,7 @@ namespace HK.Doppo.ActorControllers.AISystems
                 this.instanceConditions = new List<IObservable<Unit>>(this.conditions.Count);
                 foreach (var condition in this.conditions)
                 {
-                    var instance = UnityEngine.Object.Instantiate(condition);
-                    this.instanceConditions.Add(instance.Satisfy(owner, ownerAI));
+                    this.instanceConditions.Add(condition.Evalute(owner, ownerAI));
                 }
             }
         }

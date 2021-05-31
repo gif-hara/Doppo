@@ -8,13 +8,12 @@ namespace HK.Doppo.ActorControllers.AISystems
     /// <summary>
     /// 一定間隔で条件を満たす<see cref="ScriptableAICondition"/>
     /// </summary>
-    [CreateAssetMenu(fileName = "Condition.Interval.asset", menuName = "Bright2/AI/Conditions/Interval")]
-    public sealed class Interval : ScriptableAICondition
+    public sealed class Interval : AICondition
     {
         [SerializeField]
         private float seconds = default;
-        
-        public override IObservable<Unit> Satisfy(Actor owner, ActorAIController ownerAI)
+
+        public override IObservable<Unit> Evalute(Actor owner, ActorAIController ownerAI)
         {
             return Observable.Interval(TimeSpan.FromSeconds(this.seconds)).AsUnitObservable();
         }

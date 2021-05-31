@@ -6,8 +6,7 @@ namespace HK.Doppo.ActorControllers.AISystems
     /// <summary>
     /// AIを切り替えるAI
     /// </summary>
-    [CreateAssetMenu(fileName = "ChangeAI", menuName = "Bright2/AI/Elements/ChangeAI")]
-    public sealed class ChangeAI : ScriptableAIElement
+    public sealed class ChangeAI : AIElement
     {
         [SerializeField]
         private string nextAIName = default;

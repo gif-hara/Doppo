@@ -19,20 +19,20 @@ namespace HK.Doppo.ActorControllers.AISystems
 
         private string currentAIName;
 
-        private IReadOnlyList<ScriptableAIElement> anyAIElements = default;
+        private IReadOnlyList<AIElement> anyAIElements = default;
 
-        private IReadOnlyList<ScriptableAIElement> currentElements = default;
+        private IReadOnlyList<AIElement> currentElements = default;
 
         private Actor owner;
 
-        private readonly Dictionary<string, IReadOnlyList<ScriptableAIElement>> cachedAIElements = new Dictionary<string, IReadOnlyList<ScriptableAIElement>>();
+        private readonly Dictionary<string, IReadOnlyList<AIElement>> cachedAIElements = new Dictionary<string, IReadOnlyList<AIElement>>();
 
         void Start()
         {
             this.owner = this.GetComponent<Actor>();
             Assert.IsNotNull(this.owner);
 
-            this.anyAIElements = this.CreateInstanceAIElements(this.aiBundle.AnyAIElements);
+            this.anyAIElements = this.aiBundle.AnyAIElements;
             foreach (var ai in this.anyAIElements)
             {
                 ai.Enter(this.owner, this);
@@ -76,7 +76,7 @@ namespace HK.Doppo.ActorControllers.AISystems
             }
         }
 
-        private IReadOnlyList<ScriptableAIElement> GetAIElements(string name)
+        private IReadOnlyList<AIElement> GetAIElements(string name)
         {
             if (this.cachedAIElements.ContainsKey(name))
             {
@@ -84,21 +84,9 @@ namespace HK.Doppo.ActorControllers.AISystems
             }
 
             var aiElements = this.aiBundle.Get(name).AIElements;
-            var instance = CreateInstanceAIElements(aiElements);
-            this.cachedAIElements.Add(name, instance);
+            this.cachedAIElements.Add(name, aiElements);
 
-            return instance;
-        }
-
-        private List<ScriptableAIElement> CreateInstanceAIElements(IReadOnlyList<ScriptableAIElement> aiElements)
-        {
-            var result = new List<ScriptableAIElement>(aiElements.Count);
-            foreach (var aiElement in aiElements)
-            {
-                result.Add(Object.Instantiate(aiElement));
-            }
-
-            return result;
+            return aiElements;
         }
     }
 }
