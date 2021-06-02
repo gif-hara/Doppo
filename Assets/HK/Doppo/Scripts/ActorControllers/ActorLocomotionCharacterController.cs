@@ -29,5 +29,13 @@ namespace HK.Doppo
         {
             CharacterController.transform.rotation *= addValue;
         }
+
+        public void Warp(Vector3 position, Quaternion rotation)
+        {
+            CharacterController.enabled = false;
+            CharacterController.transform.position = position;
+            CharacterController.transform.rotation = rotation;
+            CharacterController.enabled = true;
+        }
     }
 }

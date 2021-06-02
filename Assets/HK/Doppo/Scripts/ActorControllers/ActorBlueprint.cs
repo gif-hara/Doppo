@@ -20,8 +20,7 @@ namespace HK.Doppo
         public Actor Spawn(Vector3 position, Quaternion rotation)
         {
             var instance = m_Actor.Spawn();
-            instance.transform.localPosition = position;
-            instance.transform.localRotation = rotation;
+            instance.Locomotion.Warp(position, rotation);
 
             foreach (var i in m_SpawnActions)
             {

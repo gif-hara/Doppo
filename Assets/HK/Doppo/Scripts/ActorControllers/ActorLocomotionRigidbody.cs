@@ -29,5 +29,12 @@ namespace HK.Doppo
         {
             Rigidbody.rotation *= addValue;
         }
+
+
+        public void Warp(Vector3 position, Quaternion rotation)
+        {
+            Rigidbody.transform.position = position;
+            Rigidbody.transform.rotation = rotation;
+        }
     }
 }

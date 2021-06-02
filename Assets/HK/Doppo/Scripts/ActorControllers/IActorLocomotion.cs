@@ -11,5 +11,7 @@ namespace HK.Doppo
         void Move(Vector3 vector);
 
         void Rotation(Quaternion addValue);
+
+        void Warp(Vector3 position, Quaternion rotation);
     }
 }
