@@ -19,11 +19,11 @@ namespace HK.Doppo.AISystems
 
         public string NodeName => m_NodeName;
 
-        public void Enter(IOwner owner)
+        public void Enter(IOwner owner, AIController controller)
         {
             foreach (var i in m_Elements)
             {
-                i.Enter(owner);
+                i.Enter(owner, controller);
             }
         }
 

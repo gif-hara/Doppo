@@ -32,7 +32,7 @@ namespace HK.Doppo.AISystems
 
             m_CurrentNodeName = nextNodeName;
             Assert.IsTrue(m_Nodes.ContainsKey(m_CurrentNodeName), $"{m_CurrentNodeName}に紐づく{typeof(Node)}が存在しません");
-            m_Nodes[m_CurrentNodeName].Enter(m_Owner);
+            m_Nodes[m_CurrentNodeName].Enter(m_Owner, this);
         }
     }
 }

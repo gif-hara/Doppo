@@ -10,7 +10,7 @@ namespace HK.Doppo.AISystems
     /// </summary>
     public interface IAction
     {
-        void Enter(IOwner owner, IObservable<Unit> ignition);
+        void Enter(IOwner owner, AIController controller, IObservable<Unit> ignition);
 
         void Exit();
     }

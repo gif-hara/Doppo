@@ -14,7 +14,7 @@ namespace HK.Doppo.AISystems
         [SerializeField]
         private string m_Message = default;
 
-        public void Enter(IOwner owner, IObservable<Unit> ignition)
+        public void Enter(IOwner owner, AIController controller, IObservable<Unit> ignition)
         {
             ignition
                 .Subscribe(_ => Debug.Log(m_Message));

@@ -22,14 +22,14 @@ namespace HK.Doppo.AISystems
         [SerializeReference, SubclassSelector(type: typeof(IAction))]
         private List<IAction> m_Actions = default;
 
-        public void Enter(IOwner owner)
+        public void Enter(IOwner owner, AIController controller)
         {
             var ignition = m_Ignitions
                 .Select(x => x.AsObservable(owner))
                 .Merge();
             foreach (var i in m_Actions)
             {
-                i.Enter(owner, ignition);
+                i.Enter(owner, controller, ignition);
             }
         }
 
