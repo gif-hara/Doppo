@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace HK.Doppo.AISystems
     /// <summary>
     /// 
     /// </summary>
-    public sealed class AIController
+    public sealed class AIController : IDisposable
     {
         private readonly Dictionary<string, Node> m_Nodes = default;
 
@@ -33,6 +34,16 @@ namespace HK.Doppo.AISystems
             m_CurrentNodeName = nextNodeName;
             Assert.IsTrue(m_Nodes.ContainsKey(m_CurrentNodeName), $"{m_CurrentNodeName}に紐づく{typeof(Node)}が存在しません");
             m_Nodes[m_CurrentNodeName].Enter(m_Owner, this);
+        }
+
+        public void Dispose()
+        {
+            if (string.IsNullOrEmpty(m_CurrentNodeName))
+            {
+                return;
+            }
+
+            m_Nodes[m_CurrentNodeName].Exit();
         }
     }
 }

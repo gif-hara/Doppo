@@ -16,6 +16,7 @@ MonoBehaviour:
     type: 3}
   m_SpawnActions:
   - id: 0
+  - id: 1
   references:
     version: 1
     00000000:
@@ -23,3 +24,9 @@ MonoBehaviour:
       data:
         m_Status:
           hitPoint: 10
+          moveSpeed: 5
+    00000001:
+      type: {class: AttachAIController, ns: HK.Doppo, asm: Assembly-CSharp}
+      data:
+        m_AI: {fileID: 11400000, guid: 979fd80f8c453415eb0467f9e19f48b3, type: 2}
+        m_InitialNodeName: Idle
