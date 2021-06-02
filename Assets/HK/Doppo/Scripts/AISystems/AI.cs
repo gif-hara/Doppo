@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -12,5 +13,7 @@ namespace HK.Doppo.AISystems
     {
         [SerializeField]
         private List<Node> m_Nodes = default;
+
+        public List<Node> Nodes => m_Nodes;
     }
 }

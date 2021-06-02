@@ -16,5 +16,23 @@ namespace HK.Doppo.AISystems
 
         [SerializeField]
         private List<ActionInvoker> m_Elements = default;
+
+        public string NodeName => m_NodeName;
+
+        public void Enter(IOwner owner)
+        {
+            foreach (var i in m_Elements)
+            {
+                i.Enter(owner);
+            }
+        }
+
+        public void Exit()
+        {
+            foreach (var i in m_Elements)
+            {
+                i.Exit();
+            }
+        }
     }
 }
