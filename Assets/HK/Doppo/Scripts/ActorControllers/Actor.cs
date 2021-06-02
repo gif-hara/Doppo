@@ -1,4 +1,8 @@
+using System;
+using HK.Doppo.AISystems;
 using HK.Framework;
+using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -7,7 +11,7 @@ namespace HK.Doppo
     /// <summary>
     /// 
     /// </summary>
-    public sealed class Actor : MonoBehaviour
+    public sealed class Actor : MonoBehaviour, IOwner
     {
         public IActorLocomotion Locomotion
         {
@@ -75,6 +79,11 @@ namespace HK.Doppo
                     targetCollider = other
                 });
             }
+        }
+
+        IObservable<Unit> IOwner.UpdateAsObservable()
+        {
+            return this.UpdateAsObservable();
         }
     }
 }
