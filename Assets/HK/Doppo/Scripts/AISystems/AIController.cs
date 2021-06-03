@@ -19,7 +19,7 @@ namespace HK.Doppo.AISystems
 
         public AIController(AI ai, IOwner owner, string initialNodeName)
         {
-            m_Nodes = ai.Nodes.ToDictionary(x => x.NodeName);
+            m_Nodes = UnityEngine.Object.Instantiate(ai).Nodes.ToDictionary(x => x.NodeName, x => x);
             m_Owner = owner;
             Change(initialNodeName);
         }
