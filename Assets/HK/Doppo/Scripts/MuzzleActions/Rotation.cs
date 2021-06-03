@@ -18,7 +18,7 @@ namespace HK.Doppo.MuzzleActions
             spawnedActor.Events.UpdateSafeAsObservable()
                 .Subscribe(_ =>
                 {
-                    spawnedActor.Locomotion.Rotation(m_RotationSelector.GetAddRotation(spawnedActor.transform.rotation));
+                    spawnedActor.Locomotion.AddRotation(m_RotationSelector.GetAddRotation(spawnedActor.transform.rotation));
                 })
                 .AddTo(disposable);
         }

@@ -25,7 +25,12 @@ namespace HK.Doppo
             CharacterController.Move(vector);
         }
 
-        public void Rotation(Quaternion addValue)
+        public void SetRotation(Quaternion rotation)
+        {
+            CharacterController.transform.rotation = rotation;
+        }
+
+        public void AddRotation(Quaternion addValue)
         {
             CharacterController.transform.rotation *= addValue;
         }

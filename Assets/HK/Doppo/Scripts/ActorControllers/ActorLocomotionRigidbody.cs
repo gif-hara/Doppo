@@ -25,11 +25,15 @@ namespace HK.Doppo
             Rigidbody.position += vector;
         }
 
-        public void Rotation(Quaternion addValue)
+        public void SetRotation(Quaternion rotation)
+        {
+            Rigidbody.rotation = rotation;
+        }
+
+        public void AddRotation(Quaternion addValue)
         {
             Rigidbody.rotation *= addValue;
         }
-
 
         public void Warp(Vector3 position, Quaternion rotation)
         {

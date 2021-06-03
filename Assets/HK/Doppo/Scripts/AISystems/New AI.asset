@@ -20,13 +20,18 @@ MonoBehaviour:
       - id: 0
       m_Actions:
       - id: 1
-  - m_NodeName: Move
-    m_Elements:
-    - m_Comment: "\u653B\u6483"
+    - m_Comment: "\u30D7\u30EC\u30A4\u30E4\u30FC\u306E\u65B9\u5411\u3078\u5411\u304F"
       m_Ignitions:
       - id: 2
       m_Actions:
       - id: 3
+  - m_NodeName: Move
+    m_Elements:
+    - m_Comment: "\u653B\u6483"
+      m_Ignitions:
+      - id: 4
+      m_Actions:
+      - id: 5
   references:
     version: 1
     00000000:
@@ -36,4 +41,8 @@ MonoBehaviour:
     00000002:
       type: {class: IgnitionUpdateAsObservable, ns: HK.Doppo.AISystems, asm: Assembly-CSharp}
     00000003:
+      type: {class: LookAt, ns: HK.Doppo.ActorControllers.AISystems.Actions, asm: Assembly-CSharp}
+    00000004:
+      type: {class: IgnitionUpdateAsObservable, ns: HK.Doppo.AISystems, asm: Assembly-CSharp}
+    00000005:
       type: {class: Move, ns: HK.Doppo.ActorControllers.AISystems.Actions, asm: Assembly-CSharp}
